@@ -1,4 +1,10 @@
-pathfinding==1.0.1
-pip==22.0.4
-setuptools==62.1.0
-wheel==0.37.1
+assertpy==1.1
+attrs==21.4.0
+iniconfig==1.1.1
+packaging==21.3
+pluggy==1.0.0
+py==1.11.0
+pyparsing==3.0.9
+PySimpleGUI==4.60.1
+PySimpleGUI-Events==0.0.3
+tomli==2.0.1
