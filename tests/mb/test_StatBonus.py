@@ -5,7 +5,7 @@ from assertpy import assert_that
 from mb import StatBonus
 
 
-class test_NewStatblocks(TestCase):
+class TestNewStatBlocks(TestCase):
     def setUp(self) -> None:
         self.data = {}
         StatBonus.new_statblocks(self.data)
@@ -107,7 +107,7 @@ class test_NewStatblocks(TestCase):
         assert_that(actual).is_equal_to(expected)
 
 
-class test_CalculateStatScores(TestCase):
+class TestCalculateStatScores(TestCase):
     def setUp(self) -> None:
         self.data = {}
         StatBonus.new_statblocks(self.data)
