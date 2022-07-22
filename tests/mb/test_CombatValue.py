@@ -4,7 +4,7 @@ from assertpy import assert_that
 from mb.CombatValue import calculate_combat_value
 
 
-class test_CombatValue(unittest.TestCase):
+class TestCombatValue(unittest.TestCase):
     def test_noOCV(self):
         data = {MBKeys.defensive_combat_value: 2}
         calculate_combat_value(data)
