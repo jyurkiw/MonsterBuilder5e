@@ -168,3 +168,12 @@ class TestCalculateStatScores(TestCase):
         expected = 23
 
         assert_that(actual).is_equal_to(expected)
+
+    def test_set_stat_bonus(self):
+        data = self.data
+        StatBonus.set_stat_bonus(data, StatKeys.dexterity, 4)
+
+        actual = StatBonus.get_stat_bonus(data, StatKeys.dexterity)
+        expected = 4
+
+        assert_that(actual).is_equal_to(expected)
