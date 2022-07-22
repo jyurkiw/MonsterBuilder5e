@@ -100,7 +100,7 @@ class TestMinHigherThanMax(TestCase):
 
         try:
             HitPoints.set_min_max_hp_and_hd(data, 200, 100)
-        except HitPoints.MinHPGTorEQMaxHPException as mex:
+        except HitPoints.MinHPGTorEQMaxHPException:
             actual = True
 
         assert_that(actual).described_as(
