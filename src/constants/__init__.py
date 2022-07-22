@@ -71,7 +71,3 @@ HitDice = {
 
 
 _hd_set = set([v for v in HitDice.values()])
-
-
-def validate_hd(hd):
-    return hd in _hd_set
