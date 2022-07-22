@@ -96,10 +96,13 @@ class TestMinHigherThanMax(TestCase):
     def test_min_higher_than_max(self):
         data = self.data
 
+        actual = False
+
         try:
             HitPoints.set_min_max_hp_and_hd(data, 200, 100)
-            fail('No exception raised')
         except HitPoints.MinHPGTorEQMaxHPException as mex:
-            assert_that(type(mex)).is_equal_to(HitPoints.MinHPGTorEQMaxHPException)
-        except Exception as ex:
-            fail(f'Unexpected exception type raised: {type(ex)}')
+            actual = True
+
+        assert_that(actual).described_as(
+            "Actual should be set True if HitPoints.MinHPGTorEQMaxHPException is raised"
+        ).is_true()

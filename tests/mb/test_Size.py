@@ -28,17 +28,16 @@ class TestSize(TestCase):
     def test_setNonExistentSize(self):
         data = self.data
 
+        actual = False
+
         try:
             StatBonus.new_statblocks(data)
             StatBonus.set_stat_bonus(data, StatKeys.constitution, 3)
             Size.set_size(data, "flumph")
-            fail(
-                f'set_size("flumph") should have failed but did not. Size set to {data[MBKeys.size]}'
-            )
         except Size.InvalidSizeException as ex:
-            assert_that(type(ex)).is_equal_to(Size.InvalidSizeException)
-        except Exception as gex:
-            fail(f"Expected {type(Size.InvalidSizeException)} but found {type(gex)}")
+            actual = True
+
+        assert_that(actual).described_as('Set actual to true if Size.InvalidSizeException is caught.').is_true()
 
     def test_setHDBySize(self):
         data = self.data
