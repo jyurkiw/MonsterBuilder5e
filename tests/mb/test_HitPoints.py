@@ -1,6 +1,7 @@
 import math
 from unittest import TestCase
 from assertpy import assert_that
+from assertpy import fail
 from constants import MBKeys
 from constants import StatKeys
 from constants import Sizes
@@ -82,3 +83,23 @@ class TestHitPoints(TestCase):
         actual = data[MBKeys.maximum_target_hp]
 
         assert_that(expected).is_less_than_or_equal_to(actual)
+
+
+class TestMinHigherThanMax(TestCase):
+    def setUp(self) -> None:
+        data = {}
+        StatBonus.new_statblocks(data)
+        StatBonus.set_stat_bonus(data, StatKeys.constitution, 3)
+        Size.set_size(data, Sizes.large)
+        self.data = data
+
+    def test_min_higher_than_max(self):
+        data = self.data
+
+        try:
+            HitPoints.set_min_max_hp_and_hd(data, 200, 100)
+            fail('No exception raised')
+        except HitPoints.MinHPGTorEQMaxHPException as mex:
+            assert_that(type(mex)).is_equal_to(HitPoints.MinHPGTorEQMaxHPException)
+        except Exception as ex:
+            fail(f'Unexpected exception type raised: {type(ex)}')
