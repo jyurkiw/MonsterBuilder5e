@@ -1,5 +1,16 @@
 from dataclasses import dataclass
-from dataclasses import field
+from dataclasses import fields
+
+
+def all_values(t: type):
+    """
+    Get all field values from a constants class.
+    :param t: constants class type
+    :type t: type
+    :return: List of values
+    :rtype: [str]
+    """
+    return [f.default for f in fields(t)]
 
 
 @dataclass
@@ -11,6 +22,8 @@ class MBKeys(object):
     stat_bonuses: str = "STAT_BONUSES"
     stat_scores: str = "STAT_SCORES"
 
+    size: str = "SIZE"
+
 
 @dataclass
 class StatKeys(object):
@@ -21,11 +34,19 @@ class StatKeys(object):
     wisdom: str = "WISDOM"
     charisma: str = "CHARISMA"
 
-    all_keys: tuple = (
-            "STRENGTH",
-            "DEXTERITY",
-            "CONSTITUTION",
-            "INTELLIGENCE",
-            "WISDOM",
-            "CHARISMA",
-    )
+
+@dataclass
+class Sizes(object):
+    tiny: str = "Tiny"
+    small: str = "Small"
+    medium: str = "Medium"
+    large: str = "Large"
+    huge: str = "Huge"
+    gargantuan: str = "Gargantuan"
+
+
+_size_set = set(all_values(Sizes))
+
+
+def validate_size(size):
+    return size in _size_set

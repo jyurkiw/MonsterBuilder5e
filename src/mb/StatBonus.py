@@ -1,9 +1,10 @@
 from constants import MBKeys
 from constants import StatKeys
+from constants import all_values
 
 
 def _set_statblock(data, key):
-    data[key] = {key: 0 for key in StatKeys.all_keys}
+    data[key] = {key: 0 for key in all_values(StatKeys)}
 
 
 def new_statblocks(data):
