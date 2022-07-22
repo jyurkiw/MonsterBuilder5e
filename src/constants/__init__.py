@@ -23,6 +23,14 @@ class MBKeys(object):
     stat_scores: str = "STAT_SCORES"
 
     size: str = "SIZE"
+    hit_die: str = "HIT_DIE"
+    average_hp_per_hd: str = "AVERAGE_HP_PER_HD"
+    maximum_target_hp: str = 'MAXIMUM_TARGET_HP'
+    minimum_target_hp: str = 'MINIMUM_TARGET_HP'
+    maximum_actual_hp: str = 'MAXIMUM_ACTUAL_HP'
+    minimum_actual_hp: str = 'MINIMUM_ACTUAL_HP'
+    maximum_hd: str = 'MAXIMUM_HD'
+    minimum_hd: str = 'MINIMUM_HD'
 
 
 @dataclass
@@ -50,3 +58,20 @@ _size_set = set(all_values(Sizes))
 
 def validate_size(size):
     return size in _size_set
+
+
+HitDice = {
+    Sizes.tiny: 4,
+    Sizes.small: 6,
+    Sizes.medium: 8,
+    Sizes.large: 10,
+    Sizes.huge: 12,
+    Sizes.gargantuan: 20,
+}
+
+
+_hd_set = set([v for v in HitDice.values()])
+
+
+def validate_hd(hd):
+    return hd in _hd_set
